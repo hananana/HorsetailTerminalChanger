@@ -17,9 +17,18 @@ fi
 if ! [ -e ~/.schemes-house ]; then
     mkdir ~/.schemes-house
     echo 'make .schemes-setting dir'
-else 
+else
     echo 'already exists .schemes-house dir'
 fi
+
+TERM_PROFILE=$HOME/.schemes-house/osx-terminal-themes/schemes/Blazer.terminal
+CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')"
+if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
+    open "$TERM_PROFILE"
+    defaults write com.apple.terminal "Default Window Settings" -string "$TERM_PROFILE"
+    defaults write com.apple.terminal "Startup Window Settings" -string "$TERM_PROFILE"
+fi
+
 function set_font
 {
     osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""

@@ -1,21 +1,36 @@
 # schemes-selector
 
 ## SUMMARY
-Change terminal-scheme by one command.  
+Select installed schemes.  
+Add terminal-scheme by one command.  
+Change Font by one command.  
 Easy usage from zplug.  
 Save settings automatically.  
 Manage schemes automatically.  
 
-## TESTED
+## TESTED & REQUIRED
 
 - zsh 5.0.8
+- peco
 
 ## FUNCTION
 
-- change schemes by one command.
+- select installed schemes.
 
 ```sh
-scheme-selector 'lysyi3m/osx-terminal-themes' 'schemes/AdventureTime.terminal'
+schemes-selector
+```
+
+- add schemes by one command.
+
+```sh
+schemes-selector -a 'lysyi3m/osx-terminal-themes'
+```
+
+- change font by one command.
+
+```sh
+schemes-selector -f "Menleo" -s 12
 ```
 
 - easy usage from zplug.
@@ -24,6 +39,6 @@ scheme-selector 'lysyi3m/osx-terminal-themes' 'schemes/AdventureTime.terminal'
 zplug "hananana/schemes-selector", of:init.sh
 ```
 
-- save settings at ~/.schemes-selector automatically.
+- save settings at ~/.schemes-settings automatically.
 
-- save schemes in ~/.schemes-house
+- save schemes in ~/.schemes-house automatically.

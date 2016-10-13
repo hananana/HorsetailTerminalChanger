@@ -20,3 +20,10 @@ if ! [ -e ~/.schemes-house ]; then
 else 
     echo 'already exists .schemes-house dir'
 fi
+function set_font
+{
+    osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
+    osascript -e "tell application \"Terminal\" to set the font size of window 1 to $2"
+}
+
+set_font "Menleo" 12

@@ -1,10 +1,10 @@
 #!/bin/zsh
 
 ## check arguments
-if [[ -z $1 || -z $2 ]]; then
-    echo "error: must need 2 argument"  1>&2
-    exit 1
-fi
+# if [[ -z $1 || -z $2 ]]; then
+#     echo "error: must need 2 argument"  1>&2
+#     exit 1
+# fi
 
 ## check dir
 if ! [ -e ~/.schemes-setting ]; then
@@ -21,18 +21,22 @@ else
     echo 'already exists .schemes-house dir'
 fi
 
-TERM_PROFILE=$HOME/.schemes-house/osx-terminal-themes/schemes/Blazer.terminal
-CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')"
-if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
-    open "$TERM_PROFILE"
-    defaults write com.apple.terminal "Default Window Settings" -string "$TERM_PROFILE"
-    defaults write com.apple.terminal "Startup Window Settings" -string "$TERM_PROFILE"
-fi
+ARR=('bar' 'foo')
 
-function set_font
-{
-    osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
-    osascript -e "tell application \"Terminal\" to set the font size of window 1 to $2"
-}
+$ARR | peco
 
-set_font "Menleo" 12
+# TERM_PROFILE=$HOME/.schemes-house/osx-terminal-themes/schemes/Blazer.terminal
+# CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')"
+# if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
+#     open "$TERM_PROFILE"
+#     defaults write com.apple.terminal "Default Window Settings" -string "$TERM_PROFILE"
+#     defaults write com.apple.terminal "Startup Window Settings" -string "$TERM_PROFILE"
+# fi
+
+# function set_font
+# {
+#     osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
+#     osascript -e "tell application \"Terminal\" to set the font size of window 1 to $2"
+# }
+#
+# set_font "Menleo" 12

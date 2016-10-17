@@ -6,7 +6,6 @@
 #     exit 1
 # fi
 
-
 ## check peco
 
 SCHEME_HOUSE_DIR=$HOME/.schemes-house
@@ -33,18 +32,15 @@ result=`find $SCHEME_HOUSE_DIR -name '*.terminal' | peco`
 TERM_PROFILE=$result
 # echo $TERM_PROFILE
 CURRENT_PROFILE="$(defaults read com.apple.Terminal 'Default Window Settings')"
-# echo $CURRENT_PROFILE
+echo $CURRENT_PROFILE
 FILE_NAME_EXT=${result##**/}
-FILE_NAME=${FILE_NAME%.*}
+FILE_NAME=${FILE_NAME_EXT%.*}
 
 ## むう。挙動がよくわからんねぇ。変なschemeがデフォルトにセットされたりしておる
 if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
-    echo 'update profile'
     open "$TERM_PROFILE"
-    defaults write com.apple.Terminal "Default Window Settings" -string "$FILE_NAME"
-    defaults write com.apple.Terminal "Startup Window Settings" -string "$FILE_NAME"
-#     defaults write com.apple.Terminal "Default Window Settings" -string "$TERM_PROFILE"
-#     defaults write com.apple.Terminal "Startup Window Settings" -string "$TERM_PROFILE"
+#     defaults write com.apple.Terminal "Default Window Settings" -string "$FILE_NAME"
+#     defaults write com.apple.Terminal "Startup Window Settings" -string "$FILE_NAME"
 fi
 
 # function set_font

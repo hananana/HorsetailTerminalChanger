@@ -43,10 +43,10 @@ if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
 #     defaults write com.apple.Terminal "Startup Window Settings" -string "$FILE_NAME"
 fi
 
-# function set_font
-# {
-#     osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
-#     osascript -e "tell application \"Terminal\" to set the font size of window 1 to $2"
-# }
-#
-# set_font "Menleo" 12
+function set_font
+{
+    osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
+    osascript -e "tell application \"Terminal\" to set the font size of window 1 to $2"
+}
+
+set_font "Menleo" 12

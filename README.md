@@ -13,6 +13,8 @@ Manage schemes automatically.
 - zsh 5.0.8
 - peco
 
+## HOW TO USE
+
 ## FUNCTION
 
 - select installed schemes.

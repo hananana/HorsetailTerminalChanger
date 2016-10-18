@@ -1,8 +1,39 @@
 #!/bin/zsh
 
+open_scheme()
+{
+    result=`find $SCHEME_HOUSE_DIR -name '*.terminal' | peco`
+    open $result
+}
 
-## check peco
+save_scheme()
+{
+    selected=`defaults read com.apple.Terminal 'Window Settings' | grep name | tr -d ' ' | sed -e 's/name=//' | sed -e 's/;//' | peco`
+    defaults write com.apple.Terminal "Default Window Settings" -string $selected
+    defaults write com.apple.Terminal "Startup Window Settings" -string $selected
+    echo "set ${selected}. PLZ restart terminal"
+}
 
+load_list()
+{
+    echo "----- schemes list -----"
+    defaults read com.apple.Terminal 'Window Settings' | grep name | tr -d ' ' | sed -e 's/name=//' 
+}
+
+set_font_name()
+{
+    echo "not implemented"
+}
+
+set_font_size()
+{
+    echo -n "font size? " 
+    read size
+    osascript -e "tell application \"Terminal\" to set the font size of window 1 to $size"
+    echo "DONE"
+}
+
+# define variables
 SCHEME_HOUSE_DIR=$HOME/.schemes-house
 SCHEME_SETTING=$HOME/.schemes-setting
 

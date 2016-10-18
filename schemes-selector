@@ -6,6 +6,11 @@ open_scheme()
     open $result
 }
 
+get_scheme()
+{
+    echo "not implemented"
+}
+
 save_scheme()
 {
     selected=`defaults read com.apple.Terminal 'Window Settings' | grep name | tr -d ' ' | sed -e 's/name=//' | sed -e 's/;//' | peco`
@@ -49,10 +54,12 @@ if ! [ -e $SCHEME_SETTING ]; then
 fi
 
 ## select function
-COMMANDS=("open" "save" "list" "font_name" "font_size")
+COMMANDS=("open" "get" "save" "list" "font_name" "font_size")
 SELECTED_COMMAND=`for item in ${COMMANDS[@]}; do echo $item; done | peco`
 if [ $SELECTED_COMMAND = "open" ]; then
     open_scheme
+elif [ $SELECTED_COMMAND = "get" ]; then
+    get_scheme
 elif [ $SELECTED_COMMAND = "save" ]; then
     save_scheme
 elif [ $SELECTED_COMMAND = "list" ]; then

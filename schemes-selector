@@ -27,7 +27,9 @@ load_list()
 
 set_font_name()
 {
-    echo "not implemented"
+    selected=`fc-list --verbose | grep family: | sed -e 's/family://' | sed -e 's/(s)//' | peco`
+    osascript -e "tell application \"Terminal\" to set the font name of window 1 to $selected"
+    echo "DONE"
 }
 
 set_font_size()
@@ -69,24 +71,3 @@ elif [ $SELECTED_COMMAND = "font_name" ]; then
 elif [ $SELECTED_COMMAND = "font_size" ]; then
     set_font_size
 fi
-
-## get exists .terminal and peco
-
-# TERM_PROFILE=$result
-# echo $TERM_PROFILE
-# CURRENT_PROFILE="$(defaults read com.apple.Terminal 'Default Window Settings')"
-# FILE_NAME_EXT=${result##**/}
-# FILE_NAME=${FILE_NAME_EXT%.*}
-
-## むう。挙動がよくわからんねぇ。変なschemeがデフォルトにセットされたりしておる
-# if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
-#     defaults write com.apple.Terminal "Default Window Settings" -string "$FILE_NAME"
-#     defaults write com.apple.Terminal "Startup Window Settings" -string "$FILE_NAME"
-# fi
-
-function set_font
-{
-    osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
-}
-
-set_font "Menleo" 12

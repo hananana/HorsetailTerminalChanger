@@ -41,38 +41,45 @@ SCHEME_SETTING=$HOME/.schemes-setting
 if ! [ -e $SCHEME_HOUSE_DIR ]; then
     touch $SCHEME_HOUSE_DIR
     echo 'make .schemes-setting file'
-else
-    echo 'already exists .schemes-setting file'
 fi
 
 if ! [ -e $SCHEME_SETTING ]; then
     mkdir $SCHEME_SETTING
     echo 'make .schemes-setting dir'
-else
-    echo 'already exists .schemes-house dir'
+fi
+
+## select function
+COMMANDS=("open" "save" "list" "font_name" "font_size")
+SELECTED_COMMAND=`for item in ${COMMANDS[@]}; do echo $item; done | peco`
+if [ $SELECTED_COMMAND = "open" ]; then
+    open_scheme
+elif [ $SELECTED_COMMAND = "save" ]; then
+    save_scheme
+elif [ $SELECTED_COMMAND = "list" ]; then
+    load_list
+elif [ $SELECTED_COMMAND = "font_name" ]; then
+    set_font_name
+elif [ $SELECTED_COMMAND = "font_size" ]; then
+    set_font_size
 fi
 
 ## get exists .terminal and peco
-result=`find $SCHEME_HOUSE_DIR -name '*.terminal' | peco`
 
-TERM_PROFILE=$result
+# TERM_PROFILE=$result
 # echo $TERM_PROFILE
-CURRENT_PROFILE="$(defaults read com.apple.Terminal 'Default Window Settings')"
-echo $CURRENT_PROFILE
-FILE_NAME_EXT=${result##**/}
-FILE_NAME=${FILE_NAME_EXT%.*}
+# CURRENT_PROFILE="$(defaults read com.apple.Terminal 'Default Window Settings')"
+# FILE_NAME_EXT=${result##**/}
+# FILE_NAME=${FILE_NAME_EXT%.*}
 
 ## むう。挙動がよくわからんねぇ。変なschemeがデフォルトにセットされたりしておる
-if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
-    open "$TERM_PROFILE"
+# if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
 #     defaults write com.apple.Terminal "Default Window Settings" -string "$FILE_NAME"
 #     defaults write com.apple.Terminal "Startup Window Settings" -string "$FILE_NAME"
-fi
+# fi
 
 function set_font
 {
     osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
-    osascript -e "tell application \"Terminal\" to set the font size of window 1 to $2"
 }
 
 set_font "Menleo" 12

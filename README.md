@@ -1,12 +1,11 @@
 # schemes-selector
 
 ## SUMMARY
+Select Command.
 Select installed schemes.  
-Add terminal-scheme by one command.  
-Change Font by one command.  
+Download terminal-scheme.
+Change Font.
 Easy usage from zplug.  
-Save settings automatically.  
-Manage schemes automatically.  
 
 ## TESTED & REQUIRED
 
@@ -41,6 +40,6 @@ schemes-selector -f "Menleo" -s 12
 zplug "hananana/schemes-selector", of:init.sh
 ```
 
-- save settings at ~/.schemes-settings automatically.
-
-- save schemes in ~/.schemes-house automatically.
+## TODO
+- [ ] download scheme
+- [ ] install by zplug

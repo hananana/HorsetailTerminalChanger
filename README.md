@@ -1,8 +1,8 @@
-# schemes-selector
+# HorsetailTerminalChanger
 
 Select Command.
-Apply installed schemes.  
-Download terminal-scheme.
+Apply installed scheme.  
+Download scheme.
 Change Font.
 Easy usage from zplug.  
 
@@ -35,6 +35,6 @@ now writing....
 - easy usage from zplug.
 
 ## TODO
-- [ ] download scheme
+- [x] download scheme
 - [ ] install by zplug
 - [ ] error handling

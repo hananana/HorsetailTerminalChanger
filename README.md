@@ -1,8 +1,7 @@
 # schemes-selector
 
-## SUMMARY
 Select Command.
-Select installed schemes.  
+Apply installed schemes.  
 Download terminal-scheme.
 Change Font.
 Easy usage from zplug.  
@@ -14,32 +13,28 @@ Easy usage from zplug.
 
 ## HOW TO USE
 
-## FUNCTION
-
-- select installed schemes.
-
+1. type command
 ```sh
 schemes-selector
 ```
 
-- add schemes by one command.
+2. select and enter
 
-```sh
-schemes-selector -a 'lysyi3m/osx-terminal-themes'
-```
+now writing....
 
-- change font by one command.
+## FUNCTION
 
-```sh
-schemes-selector -f "Menleo" -s 12
-```
+- select installed schemes.
+
+- apply installed schemes.
+
+- download schemes.
+
+- change font.
 
 - easy usage from zplug.
-
-```sh
-zplug "hananana/schemes-selector", of:init.sh
-```
 
 ## TODO
 - [ ] download scheme
 - [ ] install by zplug
+- [ ] error handling

@@ -14,8 +14,8 @@ get_scheme()
 {
     echo -n "PLZ type \"username/reponame\" in github. "
     read userNameAndRepoName
-    repoName=`echo $userNameAndRepoName | awk -F / '{print $1}'`
-    userName=`echo $userNameAndRepoName | awk -F / '{print $2}'`
+    userName=`echo $userNameAndRepoName | awk -F / '{print $1}'`
+    repoName=`echo $userNameAndRepoName | awk -F / '{print $2}'`
     uri="https://github.com/${userNameAndRepoName}.git"
     git clone "${uri}" "${SCHEME_HOUSE_DIR}/${userName}/${repoName}"
 }

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-pluginRoot="$(builtin cd "$(dirname "BASH_SOURCE")" && pwd)"
-echo $pluginRoot
+DIR=$(cd $(dirname $0);pwd)
+source ${DIR}/src/horsetail

@@ -49,33 +49,30 @@ set_font_size()
     echo "DONE"
 }
 
-horsetail()
-{
-    ## check dir exists
-    if ! [ -e $SCHEME_HOUSE_DIR ]; then
-        touch $SCHEME_HOUSE_DIR
-        echo 'make .schemes-setting file'
-    fi
+## check dir exists
+if ! [ -e $SCHEME_HOUSE_DIR ]; then
+    touch $SCHEME_HOUSE_DIR
+    echo 'make .schemes-setting file'
+fi
 
-    if ! [ -e $SCHEME_SETTING ]; then
-        mkdir $SCHEME_SETTING
-        echo 'make .schemes-setting dir'
-    fi
+if ! [ -e $SCHEME_SETTING ]; then
+    mkdir $SCHEME_SETTING
+    echo 'make .schemes-setting dir'
+fi
 
-    ## select function
-    COMMANDS=("open" "get" "save" "list" "font_name" "font_size")
-    SELECTED_COMMAND=`for item in ${COMMANDS[@]}; do echo $item; done | peco`
-    if [ $SELECTED_COMMAND = "open" ]; then
-        open_scheme
-    elif [ $SELECTED_COMMAND = "get" ]; then
-        get_scheme
-    elif [ $SELECTED_COMMAND = "save" ]; then
-        save_scheme
-    elif [ $SELECTED_COMMAND = "list" ]; then
-        load_list
-    elif [ $SELECTED_COMMAND = "font_name" ]; then
-        set_font_name
-    elif [ $SELECTED_COMMAND = "font_size" ]; then
-        set_font_size
-    fi
-}
+## select function
+COMMANDS=("open" "get" "save" "list" "font_name" "font_size")
+SELECTED_COMMAND=`for item in ${COMMANDS[@]}; do echo $item; done | peco`
+if [ $SELECTED_COMMAND = "open" ]; then
+    open_scheme
+elif [ $SELECTED_COMMAND = "get" ]; then
+    get_scheme
+elif [ $SELECTED_COMMAND = "save" ]; then
+    save_scheme
+elif [ $SELECTED_COMMAND = "list" ]; then
+    load_list
+elif [ $SELECTED_COMMAND = "font_name" ]; then
+    set_font_name
+elif [ $SELECTED_COMMAND = "font_size" ]; then
+    set_font_size
+fi
